@@ -1,0 +1,39 @@
+version: 0.2
+run-as: root
+env:
+  variables:
+      ENV_NAME: "DEV"
+phases:
+  install:
+    commands:
+      - "apt update"
+      - "apt install default-jdk"
+  #pre_build:
+    #commands:
+      # - command
+      # - command
+  build:
+    commands:
+       - ant
+       - ls -lart
+  #post_build:
+    #commands:
+      # - command
+      # - command
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+     - "**/*"
+  name: artifact-$(date +%Y-%m-%d)
+  discard-paths: yes
+  base-directory: build
+#cache:
+  #paths:
+    # - paths
